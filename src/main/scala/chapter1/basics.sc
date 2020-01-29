@@ -10,6 +10,9 @@ def factorial(x: BigInt): BigInt =
 //The Java way
 import java.math.BigInteger
 
+import scala.collection.immutable.HashMap
+import scala.collection.mutable
+
 def factorial(x:BigInteger):BigInteger =
   if(x == BigInteger.ZERO)
     BigInteger.ONE
@@ -52,12 +55,35 @@ class MyClass{
 class MyClass(index:Int, name:String)
 
 
+// Find whether String variable contains a Upper case letter
 
+// in Java 7 or prior
+var name:String = "Nick"
+boolean nameHasUpperCase = false;
+for(int i = 0; i < name.length(); ++i){
+  if (Character.isUpperCase(name.charAt(i))){
+    nameHasUpperCase = true;
+    break;
+  }
+}
 
+// in Scala
+val nameHasUpperCase = name.exists(_.isUpper)
 
+// Java 8 improvement
+boolean nameHasUpperCase =
+  name.chars().anyMatch(
+      (int ch) -> Character.isUpperCase((char) ch)
+  )
 
+// Java vs Scala type inference
 
+//Java
+val x: HashMap[Int, String] = new HashMap[Int, String]()
 
+// Scala
+val x = new HashMap[Int, String]()
+val x: Map[Int, String] = new HashMap()
 
 
 
